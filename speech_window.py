@@ -48,14 +48,6 @@ class AudioProcessor:
 
 
 class SpeechWindow:
-    def __init__(self, api_key, lang_code, max_delay):
-        # setup speech API
-        self.setup_speech_api(api_key, lang_code, max_delay)
-        # setup GUI
-        self.setup_gui()
-
-
-class SpeechWindow:
     def __init__(
         self,
         api_key,
