@@ -5,8 +5,9 @@ Use real-time speech recognition to record conversations and query ChatGPT with 
 
 ```console
 pip3 install -r requirements.txt
+export SPEECHMATICS_API_KEY=<api_key>
+export CHATGPT_API_KEY=<api_key>
 python3 speech_window.py
 ```
 
-Test
 
