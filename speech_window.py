@@ -2,7 +2,6 @@ import argparse
 import asyncio
 import sys
 import tkinter as tk
-import traceback
 import os
 
 import openai
