@@ -132,7 +132,9 @@ class SpeechWindow:
     def help(self):
         asyncio.create_task(self.ask_for_help())
 
-    def setup_speech_api(self, api_key, lang_code, max_delay, device_index, operating_point="enhanced"):
+    def setup_speech_api(
+        self, api_key, lang_code, max_delay, device_index, operating_point="enhanced"
+    ):
         connection_url = f"wss://eu2.rt.speechmatics.com/v2/{lang_code}"
         chunk_size = 1024
         self.client_running = False
@@ -147,7 +149,10 @@ class SpeechWindow:
         # Define transcription parameters
         # Full list of parameters described here: https://speechmatics.github.io/speechmatics-python/models
         self.transcription_config = speechmatics.models.TranscriptionConfig(
-            language=lang_code, enable_partials=False, max_delay=max_delay, operating_point=operating_point
+            language=lang_code,
+            enable_partials=False,
+            max_delay=max_delay,
+            operating_point=operating_point,
         )
 
         # Register the event handler for full transcript
@@ -270,7 +275,12 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
     parser.add_argument("--lang_code", help="Language code", default="en")
-    parser.add_argument("--max_delay", help="Max delay", default=2.5, type=float)
+    parser.add_argument(
+        "--max_delay",
+        help="Max delay (seconds) for speech recogition output",
+        default=2.5,
+        type=float,
+    )
     parser.add_argument(
         "--device_index", help="Audio device index", default=-1, type=int
     )
