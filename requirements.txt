@@ -1,4 +1,3 @@
 speechmatics-python
 pyaudio
-pygame
 openai
