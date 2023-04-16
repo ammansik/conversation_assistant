@@ -57,11 +57,15 @@ class SpeechWindow:
         chatgpt_word_limit,
     ):
         # setup speech API
-        self.setup_speech_api(api_key, lang_code, max_delay, device_index)
+        self.setup_speech_api(api_key, lang_code, max_delay)
+
+        # setup audio stream
+        self.setup_pyaudio_stream(device_index)
+
         # setup GUI
         self.setup_gui()
 
-        # Conversation feedback
+        # Conversation feedback variables
         self.whole_conversation = ""
         self.latest_conversation = ""
         self.chat_prompt = chat_prompt
@@ -124,10 +128,9 @@ class SpeechWindow:
         asyncio.create_task(self.ask_for_help())
 
     def setup_speech_api(
-        self, api_key, lang_code, max_delay, device_index, operating_point="enhanced"
+        self, api_key, lang_code, max_delay, operating_point="enhanced"
     ):
         connection_url = f"wss://eu2.rt.speechmatics.com/v2/{lang_code}"
-        chunk_size = 1024
         self.client_running = False
 
         # Define connection parameters
@@ -152,6 +155,7 @@ class SpeechWindow:
             event_handler=self.print_transcript,
         )
 
+    def setup_pyaudio_stream(self, device_index, chunk_size=1024):
         self.audio_processor = AudioProcessor()
 
         # Set up PyAudio
