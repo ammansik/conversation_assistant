@@ -1,5 +1,5 @@
 # Conversation assistant
-A GUI for a real-time conversation assistant, powered by ChatGPT and Speechmatics API.
+A GUI for a real-time conversation assistant, powered by [ChatGPT](https://openai.com/blog/chatgpt) and [Speechmatics API](https://www.speechmatics.com).
 
 Use real-time speech recognition to record conversations and query ChatGPT with an in-context prompt to get help.
 
