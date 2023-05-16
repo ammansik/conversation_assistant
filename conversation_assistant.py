@@ -191,6 +191,7 @@ class SpeechWindow:
 
         SAMPLE_RATE = int(p.get_device_info_by_index(device_index)["defaultSampleRate"])
         device_name = p.get_device_info_by_index(device_index)["name"]
+        print(f'device_name: {device_name}')
 
         self.stream = p.open(
             format=pyaudio.paFloat32,
@@ -285,10 +286,7 @@ if __name__ == "__main__":
     parser.add_argument(
         "--chat_prompt",
         help="ChatGPT prompt",
-        default="I'm in a job interview. "
-        "Please help me out with some questions I'm struggling on. "
-        "Always present the answers as short bullet points (max three) for easier readability. "
-        "Also keep the language as natural sounding as possible so it's easy to recite.",
+        default="Please help with this conversation: "
     )
     args = parser.parse_args()
 
